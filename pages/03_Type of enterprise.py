@@ -3,6 +3,7 @@ import sqlite3
 import streamlit as st
 import plotly.express as px
 
+st.set_page_config(layout="wide", page_title="Belgium Enterprises Visualization", page_icon = 'App_Icon.png')
 
 con = sqlite3.connect("bce.db")
 df = pd.read_sql_query("SELECT * from enterprise", con)
@@ -19,3 +20,11 @@ plot = px.histogram(df2, x=df2['Description'], y=df2['Percentage'])
 st.plotly_chart(plot, use_container_width=True)
 
 df2
+
+hide_default_format = """
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+st.markdown(hide_default_format, unsafe_allow_html=True)

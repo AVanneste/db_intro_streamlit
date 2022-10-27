@@ -1,0 +1,15 @@
+
+[theme] # You have to add this line
+
+#base="dark"
+primaryColor="purple"
+
+#primaryColor = '#FF8C02' # Bright Orange
+
+#backgroundColor = '#00325B' # Dark Blue
+
+secondaryBackgroundColor = '#ebe6e6' 
+
+#textColor="#262730"
+
+font="sans serif"
