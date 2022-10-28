@@ -20,4 +20,4 @@ if load_page:
     df['lat'] = df['lat'].astype(float)
     df['lng'] = df['lng'].astype(float)
     df.rename(columns={'lng':'lon'}, inplace=True)
-    st.map(df.sample(frac=0.1), zoom=7)
+    st.map(df.sample(frac=0.9), zoom=7)
