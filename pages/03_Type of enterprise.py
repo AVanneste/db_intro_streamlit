@@ -9,7 +9,7 @@ load_page = False
 
 # Check if a dataframe has been created from upload in Homepage
 if 'df' in st.session_state :
-    df2 = pd.read_csv('type_of_enterpise.csv')
+    df2 = pd.read_csv('type_of_enterprise.csv')
     load_page = True
 else:
     st.write('Upload a file on Homepage first')
