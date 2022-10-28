@@ -5,6 +5,9 @@ import plotly.express as px
 
 st.set_page_config(layout="wide", page_title="Belgium Enterprises Visualization", page_icon = 'App_Icon.png')
 
+load_page = False
+
+
 # Check if a dataframe has been created from upload in Homepage
 if 'df' in st.session_state :
     df = st.session_state['df']
