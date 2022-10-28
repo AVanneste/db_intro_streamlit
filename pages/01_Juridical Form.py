@@ -20,7 +20,7 @@ if load_page:
 
 
        # Get percentage of each code
-       df = df.groupby(['Code','Description'])['Code'].count().sort_values(ascending=False).reset_index(name="Percentage")
+       df = df.groupby(['JuridicalForm','Description'])['JuridicalForm'].count().sort_values(ascending=False).reset_index(name="Percentage")
        df['Percentage'] = 100*df['Percentage']/df['Percentage'].sum()
 
 

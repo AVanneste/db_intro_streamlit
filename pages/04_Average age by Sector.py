@@ -142,11 +142,11 @@ if load_page:
     st.plotly_chart(plot, use_container_width=True)
 
     con = sqlite3.connect("bce.db")
-    df4 = pd.read_sql_query("SELECT Code, Description from code WHERE Category = 'Nace2008' and Language = 'FR'", con) 
-    df4 = df4.drop(df4[~df4['Code'].str.isalpha()].index)
-    df4.rename(columns={'Code':'Category'}, inplace=True)
+    df2 = pd.read_csv('NACE_cat.csv', dtype=str)
+    # df4 = df4.drop(df4[~df4['Code'].str.isalpha()].index)
+    # df4.rename(columns={'Code':'Category'}, inplace=True)
 
-    df = df.merge(df4, on='Category')
+    df = df.merge(df2, on='Category')
 
     df
 
