@@ -5,30 +5,35 @@ import plotly.express as px
 
 st.set_page_config(layout="wide", page_title="Belgium Enterprises Visualization", page_icon = 'App_Icon.png')
 
-# Connection to the database
-con = sqlite3.connect("bce.db")
+# Check if a dataframe has been created from upload in Homepage
+if 'df' in st.session_state :
+    df = st.session_state['df']
+    load_page = True
+else:
+    st.write('Upload a file on Homepage first')
 
-# Make it a dataframe with joined tables in SQL queries
-df = pd.read_sql_query("SELECT EnterpriseNumber, Code, Description FROM code INNER JOIN enterprise ON enterprise.JuridicalForm = code.Code WHERE Language = 'FR' and Category = 'JuridicalForm' ", con)
-
-# Get percentage of each code
-df = df.groupby(['Code','Description'])['Code'].count().sort_values(ascending=False).reset_index(name="Percentage")
-df['Percentage'] = 100*df['Percentage']/df['Percentage'].sum()
+# If yes then we can work on it
+if load_page:
 
 
-# Scatterplot display
-col1, col2 = st.columns(2)
+       # Get percentage of each code
+       df = df.groupby(['Code','Description'])['Code'].count().sort_values(ascending=False).reset_index(name="Percentage")
+       df['Percentage'] = 100*df['Percentage']/df['Percentage'].sum()
 
-x_axis_val = col1.selectbox('Select the X-axis', options=df.columns)
-y_axis_val = col2.selectbox('Select the Y-axis', options=df.columns, index=2)
 
-col = st.color_picker('Select a plot colour')
+       # Scatterplot display
+       col1, col2 = st.columns(2)
 
-plot = px.scatter(df, x=x_axis_val, y=y_axis_val)
-plot.update_traces(marker=dict(color=col))
-st.plotly_chart(plot, use_container_width=True)
+       x_axis_val = col1.selectbox('Select the X-axis', options=df.columns)
+       y_axis_val = col2.selectbox('Select the Y-axis', options=df.columns, index=2)
 
-df
+       col = st.color_picker('Select a plot colour')
+
+       plot = px.scatter(df, x=x_axis_val, y=y_axis_val)
+       plot.update_traces(marker=dict(color=col))
+       st.plotly_chart(plot, use_container_width=True)
+
+       df
 
 
 # Hide footer and top menu
