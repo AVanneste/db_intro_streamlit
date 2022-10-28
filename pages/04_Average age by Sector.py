@@ -22,6 +22,7 @@ if load_page:
 
 
     # The idea here is to create a few select boxes in the sidebar to choose (or not) region/province/city
+    df = df.dropna()
     df = df[df['Region'].notna()]
     regions = list(df['Region'].unique())
     regions.sort()
