@@ -22,10 +22,10 @@ if load_page:
     df.rename(columns={'lng':'lon'}, inplace=True)
     st.map(df.sample(frac=0.1), zoom=7)
 
-    hide_default_format = """
-       <style>
-       #MainMenu {visibility: hidden; }
-       footer {visibility: hidden;}
-       </style>
-       """
+hide_default_format = """
+    <style>
+    #MainMenu {visibility: hidden; }
+    footer {visibility: hidden;}
+    </style>
+    """
 st.markdown(hide_default_format, unsafe_allow_html=True)
