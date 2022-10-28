@@ -2,6 +2,8 @@ import pandas as pd
 import sqlite3
 import streamlit as st
 import plotly.express as px
+import numpy as np
+
 
 st.set_page_config(layout="wide", page_title="Belgium Enterprises Visualization", page_icon = 'App_Icon.png')
 
