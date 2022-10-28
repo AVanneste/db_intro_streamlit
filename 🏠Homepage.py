@@ -48,6 +48,8 @@ if upload_file is not None:
 if sample:
     try:
         df = pd.read_csv('sample_latlng.csv',dtype=str)
+        st.write('Data uploaded successfully. These are the first 5 rows.')
+        st.dataframe(df.head(5))
         st.session_state['df'] = df
     except Exception as e:
         st.write(e)
