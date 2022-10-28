@@ -29,6 +29,8 @@ st.title('🇧🇪Belgium Enterprises Visualization🇧🇪')
 # Upload box, select file
 upload_file = st.file_uploader('Upload a file containing data')
 
+sample = st.checkbox('Or use our sample')
+
 # upload the file
 if upload_file is not None:
 
@@ -42,6 +44,14 @@ if upload_file is not None:
 
     except Exception as e:
         st.write(e)
+
+if sample:
+    try:
+        df = pd.read_csv('sample_latlng.csv',dtype=str)
+        st.session_state['df'] = df
+    except Exception as e:
+        st.write(e)
+
 
 # Hide the footer
 hide_default_format = """
