@@ -20,4 +20,12 @@ if load_page:
     df['lat'] = df['lat'].astype(float)
     df['lng'] = df['lng'].astype(float)
     df.rename(columns={'lng':'lon'}, inplace=True)
-    st.map(df.sample(frac=0.9), zoom=7)
+    st.map(df.sample(frac=0.1), zoom=7)
+
+    hide_default_format = """
+       <style>
+       #MainMenu {visibility: hidden; }
+       footer {visibility: hidden;}
+       </style>
+       """
+st.markdown(hide_default_format, unsafe_allow_html=True)
